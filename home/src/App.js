@@ -1,30 +1,28 @@
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./components/Home";
+import { Book } from "./components/Book";
+import { Dashboard } from "./components/Dashboard";
+import { Navbar } from "./components/Navbar";
+import {AddName} from "./components/AddName";
+import {AddBook} from "./components/AddBook";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
+    <div>
+      <Router>
+        <Navbar />
 
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} />
-        </Switch>
-      </div>
-    </Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Book" element={<Book />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/AddName" element={<AddName />} />
+          <Route path="/AddBook" element={<AddBook />} />
+          <Route path="*" element={<h1>page not found</h1>} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
